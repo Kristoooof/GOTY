@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Game Awards - Hivatalos Tájékoztató és Szavazás</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #090b10;
+      --bg-surface: #101420;
+      --bg-card: rgba(18, 23, 36, 0.85);
+      --bg-card-hover: rgba(26, 33, 52, 0.95);
+      --accent-gold: #d4af37;
+      --accent-gold-glow: rgba(212, 175, 55, 0.4);
+      --accent-cyan: #00e5ff;
+      --accent-cyan-glow: rgba(0, 229, 255, 0.35);
+      --text-main: #f3f6fc;
+      --text-muted: #8e9db5;
+      --border-subtle: rgba(255, 255, 255, 0.09);
+      --border-gold: rgba(212, 175, 55, 0.45);
+      --border-cyan: rgba(0, 229, 255, 0.4);
+      --font-display: 'Cinzel', serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 12px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 85% 25%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 15% 70%, rgba(0, 229, 255, 0.06) 0%, transparent 55%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 11, 16, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 24px;
+    }
+
+    .header-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .trophy-svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--accent-gold);
+      filter: drop-shadow(0 0 10px var(--accent-gold-glow));
+    }
+
+    .brand-text {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav.nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav.nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      padding: 6px 0;
+    }
+
+    nav.nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    nav.nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan-glow);
+      transition: var(--transition);
+    }
+
+    nav.nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .app-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .hero-banner {
+      text-align: center;
+      padding: 50px 16px 70px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      box-shadow: 0 0 16px var(--accent-cyan-glow);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 5.5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--accent-gold) 10%, #ffffff 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead {
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    .section-block {
+      margin-bottom: 90px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-header {
+      margin-bottom: 36px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-tag {
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.95rem;
+      color: #fff;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .info-card:hover {
+      border-color: var(--border-cyan);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-gold), transparent);
+    }
+
+    .info-card.cyan-edge::before {
+      background: linear-gradient(90deg, var(--accent-cyan), transparent);
+    }
+
+    .info-stat {
+      font-family: var(--font-display);
+      font-size: 2.9rem;
+      font-weight: 900;
+      color: var(--accent-gold);
+      line-height: 1;
+      margin-bottom: 12px;
+      text-shadow: 0 0 14px var(--accent-gold-glow);
+    }
+
+    .info-stat.cyan {
+      color: var(--accent-cyan);
+      text-shadow: 0 0 14px var(--accent-cyan-glow);
+    }
+
+    .info-heading {
+      font-size: 1.25rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .info-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      margin-top: 24px;
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 4px solid var(--accent-gold);
+      padding: 22px;
+      border-radius: 4px var(--radius) var(--radius) 4px;
+      color: #e2e8f4;
+      font-size: 0.96rem;
+    }
+
+    .voting-info-bar {
+      background: rgba(0, 229, 255, 0.05);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: var(--radius);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .total-counter {
+      font-weight: 600;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .total-counter span {
+      color: var(--accent-cyan);
+      font-weight: 800;
+    }
+
+    .user-vote-status {
+      font-size: 0.92rem;
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .voting-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 24px;
+    }
+
+    .nominee-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nominee-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: var(--bg-card-hover);
+      transform: translateY(-3px);
+    }
+
+    .nominee-card.user-voted {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.3);
+    }
+
+    .nominee-cover-container {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: #141926;
+      overflow: hidden;
+    }
+
+    .nominee-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .nominee-card:hover .nominee-cover-img {
+      transform: scale(1.05);
+    }
+
+    .nominee-cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(18, 23, 36, 1) 0%, rgba(18, 23, 36, 0.3) 60%, transparent 100%);
+    }
+
+    .badge-voted {
+      display: none;
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--accent-gold);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .nominee-card.user-voted .badge-voted {
+      display: block;
+    }
+
+    .nominee-body {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nominee-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .nominee-studio {
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .nominee-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    .vote-metrics {
+      margin-bottom: 16px;
+    }
+
+    .vote-metric-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+
+    .vote-metric-labels .percent {
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .progress-track {
+      background: rgba(255, 255, 255, 0.08);
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-cyan), #0099ff);
+      border-radius: 4px;
+      transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nominee-card.user-voted .progress-fill {
+      background: linear-gradient(90deg, var(--accent-gold), #ff9900);
+    }
+
+    .vote-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      padding: 12px 18px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .vote-btn:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      box-shadow: 0 0 16px var(--accent-cyan-glow);
+    }
+
+    .nominee-card.user-voted .vote-btn {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: #000;
+    }
+
+    .winners-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    @media (max-width: 768px) {
+      .winners-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .year-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      position: relative;
+    }
+
+    .year-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-gold);
+      box-shadow: 0 12px 28px rgba(212, 175, 55, 0.18);
+      background: var(--bg-card-hover);
+    }
+
+    .year-card-thumb {
+      width: 170px;
+      min-width: 170px;
+      position: relative;
+      background: #141926;
+      overflow: hidden;
+    }
+
+    .year-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .year-card:hover .year-thumb-img {
+      transform: scale(1.08);
+    }
+
+    .year-card-body {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .year-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .year-number {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--accent-gold);
+      line-height: 1;
+    }
+
+    .year-goty-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .year-winner-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .year-subtext {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .year-action-link {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+    }
+
+    .year-card:hover .year-action-link {
+      color: var(--accent-gold);
+      transform: translateX(4px);
+    }
+
+    #detail-view {
+      display: none;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .back-btn {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 10px 22px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      margin-bottom: 28px;
+    }
+
+    .back-btn:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      transform: translateX(-4px);
+    }
+
+    .detail-hero {
+      background: linear-gradient(135deg, rgba(20, 26, 42, 0.95), rgba(11, 14, 22, 0.98));
+      border: 1px solid var(--accent-gold);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 44px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), inset 0 0 24px rgba(212, 175, 55, 0.1);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+    }
+
+    @media (max-width: 900px) {
+      .detail-hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .detail-hero-content {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .detail-year-tag {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--accent-gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .detail-goty-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.8vw, 2.9rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .detail-quote {
+      font-style: italic;
+      color: var(--text-muted);
+      border-left: 2px solid var(--accent-cyan);
+      padding-left: 14px;
+      margin-top: 16px;
+      font-size: 0.95rem;
+    }
+
+    .detail-hero-cover {
+      position: relative;
+      background: #141926;
+      min-height: 280px;
+      overflow: hidden;
+    }
+
+    .detail-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .category-card:hover {
+      border-color: var(--border-cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .category-placeholder-box {
+      width: 100%;
+      height: 160px;
+      position: relative;
+      background: #151a28;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .category-placeholder-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .category-card:hover .category-placeholder-img {
+      transform: scale(1.05);
+    }
+
+    .category-placeholder-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(16, 20, 32, 0.9) 0%, rgba(16, 20, 32, 0.2) 60%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 10px 14px;
+    }
+
+    .category-badge-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-cyan);
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+    }
+
+    .category-card-body {
+      padding: 18px 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .category-name {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+      font-weight: 800;
+    }
+
+    .category-winner {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .category-extra {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .toast-box {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(16, 20, 32, 0.95);
+      border: 1px solid #10b981;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(16, 185, 129, 0.35);
+      backdrop-filter: blur(10px);
+      padding: 16px 24px;
+      border-radius: 10px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
+      transform: translateY(140%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toast-box.visible {
+      transform: translateY(0);
+    }
+
+    .toast-icon {
+      color: #10b981;
+      font-size: 1.4rem;
+    }
+
+    footer.site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      background: rgba(9, 11, 16, 0.96);
+    }
+
+    .footer-author {
+      color: var(--accent-gold);
+      font-weight: 800;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-top: 6px;
+      font-size: 1.05rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand-logo" onclick="switchView('main')">
+        <svg class="trophy-svg" viewBox="0 0 24 24">
+          <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V19H7v2h10v-2h-4v-3.1c1.98-.44 3.51-2.03 3.61-4.06C19.08 11.63 21 9.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
+        </svg>
+        <span class="brand-text">The Game Awards</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#mukodes" onclick="switchView('main')">Hogyan Működik</a>
+        <a href="#szavazas" onclick="switchView('main')">2026 GOTY Szavazás</a>
+        <a href="#nyertesek" onclick="switchView('main')">Elmúlt Évek Nyertesei</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-container">
+    <div id="main-view">
+      
+      <!-- Hero Banner -->
+      <section class="hero-banner">
+        <div class="hero-badge">&#9733; A Videojátékok Legnagyobb Éjszakája</div>
+        <h1 class="hero-title">Ünnepeljük A <span>Kiválóságot</span></h1>
+        <p class="hero-lead">
+          Ismerd meg a The Game Awards működési alapelveit, szavazz a 2026-os esztendő legesélyesebb Év Játéka (GOTY) 
+          jelöltjeire, és tekintsd át az elmúlt évek legendás díjazottjait fotókkal és teljes kategórialistával!
+        </p>
+      </section>
+
+      <!-- 1. Blokk: The Game Awards Működése -->
+      <section id="mukodes" class="section-block">
+        <div class="section-header">
+          <span class="section-tag">1. Blokk &bull; Szabályzat és Felépítés</span>
+          <h2 class="section-title">Hogyan Működik a The Game Awards?</h2>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-stat">90%</div>
+            <h3 class="info-heading">Nemzetközi Szakmai Zsűri</h3>
+            <p class="info-desc">
+              A végső kategóriagyőztesek pontszámának 90%-át a világ több mint 100 vezető játéksajtója, független kritikusai és elismert szakorgánumai (IGN, GameSpot, Polygon, Eurogamer) által leadott szavazatok adják.
+            </p>
+          </div>
+
+          <div class="info-card cyan-edge">
+            <div class="info-stat cyan">10%</div>
+            <h3 class="info-heading">Globális Közönségszavazat</h3>
+            <p class="info-desc">
+              A rajongói voksok 10%-os súllyal közvetlenül beszámítanak az összes hivatalos kategóriába. Ez a kiegyensúlyozott formula kizárja a bot-támadásokat, miközben valódi beleszólást biztosít a játékosoknak.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-stat">100%</div>
+            <h3 class="info-heading">Player's Voice Különdíj</h3>
+            <p class="info-desc">
+              A közönség valódi hangja! Ez az egyetlen olyan presztízsdíj, amely 100%-ban a játékosok szavazatán múlik. Három kieséses fordulón keresztül a rajongók választják ki a szezon abszolút kedvencét.
+            </p>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <strong>A Peacock Theater gálája & Geoff Keighley:</strong> A Los Angeles-i Peacock Theaterben megrendezett élő közvetítés a világ legnézettebb szórakoztatóipari műsorai közé tartozik. A díjátadás mellett a Game Awards a jövőbeli játékbejelentések (World Premiere) és a The Game Awards Orchestra élő szimfonikus előadásainak otthona.
+        </div>
+      </section>
+
+      <!-- 2. Blokk: 2026-os GOTY Jelöltek és Interaktív Szavazás -->
+      <section id="szavazas" class="section-block">
+        <div class="section-header">
+          <span class="section-tag">2. Blokk &bull; Élő Közönségszavazás</span>
+          <h2 class="section-title">2026-os Év Játéka (GOTY) – Add le a Voksodat!</h2>
+        </div>
+
+        <div class="voting-info-bar">
+          <div class="total-counter">Összes leadott szavazat: <span id="total-votes-count">0</span></div>
+          <div class="user-vote-status" id="vote-prompt-text">
+            Kattints az egyik jelölt „Szavazok erre a játékra” gombjára!
+          </div>
+        </div>
+
+        <div class="voting-grid" id="nominees-container">
+          <!-- Populated dynamically with covers and stats -->
+        </div>
+      </section>
+
+      <!-- 3. Blokk: Elmúlt Évek Nyertesei -->
+      <section id="nyertesek" class="section-block">
+        <div class="section-header">
+          <span class="section-tag">3. Blokk &bull; Hall of Fame</span>
+          <h2 class="section-title">Az Elmúlt Évek Nyertesei (2018–2025)</h2>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 24px;">
+          Kattints az adott év kártyájára a teljes gálaeredmények, borítóképek és további kategóriák (Rendezés, Történet, Zene, Látványvilág) megtekintéséhez!
+        </p>
+
+        <div class="winners-grid" id="past-winners-container">
+          <!-- Populated dynamically in 2-columns -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Részletező Külön Oldal (Év Nyertesei Nézet) -->
+    <div id="detail-view">
+      <button class="back-btn" onclick="switchView('main')">
+        &#8592; Vissza a főoldalra
+      </button>
+
+      <div class="detail-hero" id="detail-hero-content">
+        <!-- Hero content filled dynamically -->
+      </div>
+
+      <div class="section-header">
+        <span class="section-tag">Gála Eredmények</span>
+        <h3 class="section-title">Kategóriagyőztesek és Borítóképek</h3>
+      </div>
+
+      <div class="categories-grid" id="detail-categories-container">
+        <!-- All categories filled dynamically with image placeholders -->
+      </div>
+    </div>
+  </main>
+
+  <div class="toast-box" id="vote-toast">
+    <span class="toast-icon">&#10004;</span>
+    <span id="toast-message">A szavazatodat sikeresen rögzítettük!</span>
+  </div>
+
+  <!-- Lábléc -->
+  <footer class="site-footer">
+    <p>&copy; The Game Awards Rajongói és Tájékoztató Portál.</p>
+    <div class="footer-author">készítette károlyi kristóf 2026</div>
+  </footer>
+
+  <script>
+    // 2026-os Év Játéka jelöltek adatai borítóképekkel és induló szavazatszámokkal
+    let nomineesData = [
+      {
+        id: "gtavi",
+        name: "Grand Theft Auto VI",
+        studio: "Rockstar Games",
+        image: "https://placehold.co/600x340/121726/00e5ff?text=Grand+Theft+Auto+VI",
+        desc: "Vice City modernkori bűnözői eposza Lucia és Jason történetével, páratlan szabadságfokkal és az iparág legfejlettebb nyílt világával.",
+        votes: 284520
+      },
+      {
+        id: "rerequiem",
+        name: "Resident Evil Requiem",
+        studio: "Capcom",
+        image: "https://placehold.co/600x340/121726/d4af37?text=Resident+Evil+Requiem",
+        desc: "A túlélőhorror csúcsa: klausztrofób atmoszféra, fotorealisztikus RE Engine látványvilág és a klasszikus túlélés modern újragondolása.",
+        votes: 198340
+      },
+      {
+        id: "007firstlight",
+        name: "007 First Light",
+        studio: "IO Interactive",
+        desc: "James Bond eredettörténete a Hitman alkotóitól: elegáns kémkedés, egzotikus helyszínek és taktikai akció a legfelsőbb szinten.",
+        image: "https://placehold.co/600x340/121726/00e5ff?text=007+First+Light",
+        votes: 156210
+      },
+      {
+        id: "controlresonant",
+        name: "Control Resonant",
+        studio: "Remedy Entertainment",
+        desc: "A legmélyebb misztikum a Remedy Connected Universe-ben. Lenyűgöző paranormális erők, elképesztő fizika és pszichológiai mélység.",
+        image: "https://placehold.co/600x340/121726/d4af37?text=Control+Resonant",
+        votes: 167300
+      },
+      {
+        id: "nioh3",
+        name: "Nioh 3",
+        studio: "Team Ninja / Koei Tecmo",
+        desc: "A souls-like műfaj legkifinomultabb kardforgatása: dark fantasy Japán, brutális yokai démonok és villámgyors fegyverváltások.",
+        image: "https://placehold.co/600x340/121726/00e5ff?text=Nioh+3",
+        votes: 144890
+      },
+      {
+        id: "forza6",
+        name: "Forza Motorsport 6",
+        studio: "Turn 10 Studios / Playground Games",
+        desc: "Next-gen szimuláció valós idejű dinamikus időjárással, lélegzetelállító gépszörnyekkel és a virtuális motorsport új mércéjével.",
+        image: "https://placehold.co/600x340/121726/d4af37?text=Forza+Motorsport+6",
+        votes: 132450
+      }
+    ];
+
+    let userVotedId = null;
+
+    const historyData = {
+      "2025": {
+        year: "2025",
+        goty: "Clair Obscur: Expedition 33",
+        studio: "Sandfall Interactive / Kepler Interactive",
+        image: "https://placehold.co/700x420/121828/d4af37?text=Clair+Obscur%3A+Expedition+33",
+        quote: "„Egy lenyűgöző francia művészeti remekmű, amely visszahozta a klasszikus körökre osztott RPG-k aranykorát a legmodernebb köntösben.”",
+        categories: [
+          { 
+            name: "Év Játéka (GOTY)", 
+            winner: "Clair Obscur: Expedition 33", 
+            studio: "Sandfall Interactive",
+            image: "https://placehold.co/500x280/161c2c/d4af37?text=Expedition+33+GOTY" 
+          },
+          { 
+            name: "Legjobb Játékrendezés", 
+            winner: "Death Stranding 2: On The Beach", 
+            studio: "Hideo Kojima / Kojima Productions",
+            image: "https://placehold.co/500x280/161c2c/00e5ff?text=Death+Stranding+2" 
+          },
+          { 
+            name: "Legjobb Narratíva", 
+            winner: "Judas", 
+            studio: "Ghost Story Games / Ken Levine",
+            image: "https://placehold.co/500x280/161c2c/d4af37?text=Judas+Narrative" 
+          },
+          { 
+            name: "Legjobb Művészeti Megvalósítás", 
+            winner: "Clair Obscur: Expedition 33", 
+            studio: "Sandfall Interactive",
+            image: "https://placehold.co/500x280/161c2c/00e5ff?text=Expedition+33+Art" 
+          },
+          { 
+            name: "Legjobb Zene és Hang", 
+            winner: "Hollow Knight: Silksong", 
+            studio: "Christopher Larkin / Team Cherry",
+            image: "https://placehold.co/500x280/161c2c/d4af37?text=Silksong+Soundtrack" 
+          },
+          { 
+            name: "Legjobb Akció / Kaland", 
+            winner: "Monster Hunter Wilds", 
+            studio: "Capcom",
+            image: "https://placehold.co/500x280/161c2c/00e5ff?text=Monster+Hunter+Wilds" 
+          },
+          { 
+            name: "Legjobb Multiplayer", 
+            winner: "ARC Raiders", 
+            studio: "Embark Studios",
+            image: "https://placehold.co/500x280/161c2c/d4af37?text=ARC+Raiders" 
+          },
+          { 
+            name: "Legjobb Adaptáció", 
+            winner: "The Last of Us - 2. Évad", 
+            studio: "HBO / PlayStation Productions",
+            image: "https://placehold.co/500x280/161c2c/00e5ff?text=The+Last+of+Us+Season+2" 
+          }
+        ]
+      },
+      "2024": {
+        year: "2024",
+        goty: "Astro Bot",
+        studio: "Team Asobi / PlayStation Studios",
+        image: "https://placehold.co/700x420/121828/00e5ff?text=Astro+Bot",
+        quote: "„A tiszta játékélmény, a kreativitás és a kontroller adta haptikus forradalom egyöntetű ünnepe.”",
+        categories: [
+          { name: "Év Játéka (GOTY)", winner: "Astro Bot", studio: "Team Asobi", image: "https://placehold.co/500x280/161c2c/00e5ff?text=Astro+Bot" },
+          { name: "Legjobb Játékrendezés", winner: "Astro Bot", studio: "Nicolas Doucet & Team", image: "https://placehold.co/500x280/161c2c/d4af37?text=Game+Direction" },
+          { name: "Legjobb Narratíva", winner: "Metaphor: ReFantazio", studio: "Studio Zero / Atlus", image: "https://placehold.co/500x280/161c2c/00e5ff?text=Metaphor+ReFantazio" },
+          { name: "Legjobb Művészeti Megvalósítás", winner: "Metaphor: ReFantazio", studio: "Shigenori Soejima", image: "https://placehold.co/500x280/161c2c/d4af37?text=Metaphor+Art" },
+          { name: "Legjobb Zene és Hang", winner: "Final Fantasy VII Rebirth", studio: "Nobuo Uematsu, Mitsuto Suzuki", image: "https://placehold.co/500x280/161c2c/00e5ff?text=FFVII+Rebirth+Music" },
+          { name: "Legjobb Akció / Kaland", winner: "Astro Bot", studio: "PlayStation Studios", image: "https://placehold.co/500x280/161c2c/d4af37?text=Action+Adventure" },
+          { name: "Legjobb Független Játék (Indie)", winner: "Balatro", studio: "LocalThunk", image: "https://placehold.co/500x280/161c2c/00e5ff?text=Balatro" }
+        ]
+      },
+      "2023": {
+        year: "2023",
+        goty: "Baldur's Gate 3",
+        studio: "Larian Studios",
+        image: "https://placehold.co/700x420/121828/d4af37?text=Baldur%27s+Gate+3",
+        quote: "„Swen Vincke teljes lovagi páncélzatban vette át a szobrot, megkoronázva a szerepjátékok új aranykorát.”",
+        categories: [
+          { name: "Év Játéka (GOTY)", winner: "Baldur's Gate 3", studio: "Larian Studios", image: "https://placehold.co/500x280/161c2c/d4af37?text=Baldurs+Gate+3" },
+          { name: "Legjobb Játékrendezés", winner: "Alan Wake 2", studio: "Sam Lake & Remedy", image: "https://placehold.co/500x280/161c2c/00e5ff?text=Alan+Wake+2" },
+          { name: "Legjobb Narratíva", winner: "Alan Wake 2", studio: "Remedy Entertainment", image: "https://placehold.co/500x280/161c2c/d4af37?text=Alan+Wake+2+Story" },
+          { name: "Legjobb Szerepjáték (RPG)", winner: "Baldur's Gate 3", studio: "Larian Studios", image: "https://placehold.co/500x280/161c2c/00e5ff?text=Best+RPG" },
+          { name: "Player's Voice Közönségdíj", winner: "Baldur's Gate 3", studio: "100% rajongói voks", image: "https://placehold.co/500x280/161c2c/d4af37?text=Players+Voice" }
+        ]
+      },
+      "2022": {
+        year: "2022",
+        goty: "Elden Ring",
+        studio: "FromSoftware / Bandai Namco",
+        image: "https://placehold.co/700x420/121828/00e5ff?text=Elden+Ring",
+        quote: "„Hidetaka Miyazaki megreformálta a nyílt világú kalandokat a felfedezés és kihívás páratlan egyensúlyával.”",
+        categories: [
+          { name: "Év Játéka (GOTY)", winner: "Elden Ring", studio: "FromSoftware", image: "https://placehold.co/500x280/161c2c/00e5ff?text=Elden+Ring" },
+          { name: "Legjobb Játékrendezés", winner: "Elden Ring", studio: "Hidetaka Miyazaki", image: "https://placehold.co/500x280/161c2c/d4af37?text=FromSoftware+Direction" },
+          { name: "Legjobb Narratíva", winner: "God of War Ragnarök", studio: "Santa Monica Studio", image: "https://placehold.co/500x280/161c2c/00e5ff?text=God+of+War+Ragnarok" },
+          { name: "Legjobb Zene és Hang", winner: "God of War Ragnarök", studio: "Bear McCreary", image: "https://placehold.co/500x280/161c2c/d4af37?text=Bear+McCreary+Score" }
+        ]
+      },
+      "2021": {
+        year: "2021",
+        goty: "It Takes Two",
+        studio: "Hazelight Studios / EA Originals",
+        image: "https://placehold.co/700x420/121828/d4af37?text=It+Takes+Two",
+        quote: "„Josef Fares örökre bebizonyította, hogy a kooperatív játékok szívhez szóló élménye verhetetlen.”",
+        categories: [
+          { name: "Év Játéka (GOTY)", winner: "It Takes Two", studio: "Hazelight Studios", image: "https://placehold.co/500x280/161c2c/d4af37?text=It+Takes+Two" },
+          { name: "Legjobb Játékrendezés", winner: "Deathloop", studio: "Arkane Studios", image: "https://placehold.co/500x280/161c2c/00e5ff?text=Deathloop" },
+          { name: "Legjobb Családi Játék", winner: "It Takes Two", studio: "Hazelight Studios", image: "https://placehold.co/500x280/161c2c/d4af37?text=Best+Family+Game" }
+        ]
+      },
+      "2020": {
+        year: "2020",
+        goty: "The Last of Us Part II",
+        studio: "Naughty Dog / Sony Interactive Entertainment",
+        image: "https://placehold.co/700x420/121828/00e5ff?text=The+Last+of+Us+Part+II",
+        quote: "„A gála történetének egyik legdíjazottabb alkotása, 7 díjjal zárva az estét.”",
+        categories: [
+          { name: "Év Játéka (GOTY)", winner: "The Last of Us Part II", studio: "Naughty Dog", image: "https://placehold.co/500x280/161c2c/00e5ff?text=TLOU+Part+II" },
+          { name: "Legjobb Játékrendezés", winner: "The Last of Us Part II", studio: "Neil Druckmann", image: "https://placehold.co/500x280/161c2c/d4af37?text=Neil+Druckmann" },
+          { name: "Legjobb Narratíva", winner: "The Last of Us Part II", studio: "Halley Gross & Neil Druckmann", image: "https://placehold.co/500x280/161c2c/00e5ff?text=Best+Narrative" }
+        ]
+      },
+      "2019": {
+        year: "2019",
+        goty: "Sekiro: Shadows Die Twice",
+        studio: "FromSoftware / Activision",
+        image: "https://placehold.co/700x420/121828/d4af37?text=Sekiro%3A+Shadows+Die+Twice",
+        quote: "„A feudális Japán kardpárbajainak könyörtelen ritmusa és művészi magassága.”",
+        categories: [
+          { name: "Év Játéka (GOTY)", winner: "Sekiro: Shadows Die Twice", studio: "FromSoftware", image: "https://placehold.co/500x280/161c2c/d4af37?text=Sekiro" },
+          { name: "Legjobb Játékrendezés", winner: "Death Stranding", studio: "Hideo Kojima", image: "https://placehold.co/500x280/161c2c/00e5ff?text=Death+Stranding" },
+          { name: "Legjobb Akciójáték", winner: "Devil May Cry 5", studio: "Capcom", image: "https://placehold.co/500x280/161c2c/d4af37?text=Devil+May+Cry+5" }
+        ]
+      },
+      "2018": {
+        year: "2018",
+        goty: "God of War",
+        studio: "Santa Monica Studio / Sony Interactive Entertainment",
+        image: "https://placehold.co/700x420/121828/00e5ff?text=God+of+War",
+        quote: "„Kratos és Atreus északi utazása a felnőtt történetmesélés és akció örök etalonjává vált.”",
+        categories: [
+          { name: "Év Játéka (GOTY)", winner: "God of War", studio: "Santa Monica Studio", image: "https://placehold.co/500x280/161c2c/00e5ff?text=God+of+War" },
+          { name: "Legjobb Játékrendezés", winner: "God of War", studio: "Cory Barlog", image: "https://placehold.co/500x280/161c2c/d4af37?text=Cory+Barlog" },
+          { name: "Legjobb Narratíva", winner: "Red Dead Redemption 2", studio: "Rockstar Games", image: "https://placehold.co/500x280/161c2c/d4af37?text=Red+Dead+Redemption+2" }
+        ]
+      }
+    };
+
+    function getTotalVotes() {
+      return nomineesData.reduce((sum, item) => sum + item.votes, 0);
+    }
+
+    function formatNumber(num) {
+      return new Intl.NumberFormat('hu-HU').format(num);
+    }
+
+    function renderNominees() {
+      const container = document.getElementById('nominees-container');
+      const totalVotes = getTotalVotes();
+      document.getElementById('total-votes-count').textContent = formatNumber(totalVotes);
+
+      container.innerHTML = '';
+
+      nomineesData.forEach(game => {
+        const percent = ((game.votes / totalVotes) * 100).toFixed(1);
+        const isVoted = (userVotedId === game.id);
+
+        const card = document.createElement('div');
+        card.className = `nominee-card ${isVoted ? 'user-voted' : ''}`;
+
+        card.innerHTML = `
+          <div class="nominee-cover-container">
+            <img class="nominee-cover-img" src="${game.image}" alt="${game.name}" onerror="this.src='https://placehold.co/600x340/121726/00e5ff?text=${encodeURIComponent(game.name)}'">
+            <div class="nominee-cover-overlay"></div>
+            <span class="badge-voted">&#10003; A Te Voksod</span>
+          </div>
+
+          <div class="nominee-body">
+            <div>
+              <h3 class="nominee-title">${game.name}</h3>
+              <span class="nominee-studio">${game.studio}</span>
+              <p class="nominee-desc">${game.desc}</p>
+            </div>
+
+            <div>
+              <div class="vote-metrics">
+                <div class="vote-metric-labels">
+                  <span>${formatNumber(game.votes)} voks</span>
+                  <span class="percent">${percent}%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: ${percent}%"></div>
+                </div>
+              </div>
+
+              <button class="vote-btn" onclick="castVote('${game.id}')">
+                ${isVoted ? '&#10003; Te ide szavaztál' : 'Szavazok erre a játékra'}
+              </button>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function castVote(gameId) {
+      if (userVotedId === gameId) {
+        showToast("Már erre a címre adtad le a szavazatodat!");
+        return;
+      }
+
+      if (userVotedId) {
+        const prev = nomineesData.find(g => g.id === userVotedId);
+        if (prev) prev.votes -= 1;
+      }
+
+      const selected = nomineesData.find(g => g.id === gameId);
+      if (selected) {
+        selected.votes += 1;
+        userVotedId = gameId;
+        showToast(`Sikeres szavazat: ${selected.name}!`);
+
+        const promptText = document.getElementById('vote-prompt-text');
+        promptText.innerHTML = `&#9733; Leadott voks: <strong>${selected.name}</strong> (Bármikor módosíthatod)`;
+      }
+
+      renderNominees();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('vote-toast');
+      const textElem = document.getElementById('toast-message');
+      textElem.textContent = msg;
+      toast.classList.add('visible');
+
+      setTimeout(() => {
+        toast.classList.remove('visible');
+      }, 3500);
+    }
+
+    function renderPastWinners() {
+      const container = document.getElementById('past-winners-container');
+      container.innerHTML = '';
+
+      const years = Object.keys(historyData).sort((a, b) => b - a);
+
+      years.forEach(yearKey => {
+        const item = historyData[yearKey];
+        const card = document.createElement('div');
+        card.className = 'year-card';
+        card.onclick = () => openYearDetails(yearKey);
+
+        card.innerHTML = `
+          <div class="year-card-thumb">
+            <img class="year-thumb-img" src="${item.image}" alt="${item.goty}" onerror="this.src='https://placehold.co/400x400/121828/d4af37?text=${encodeURIComponent(item.goty)}'">
+          </div>
+          <div class="year-card-body">
+            <div>
+              <div class="year-badge-row">
+                <span class="year-number">${item.year}</span>
+                <span class="year-goty-tag">GOTY GYŐZTES</span>
+              </div>
+              <h4 class="year-winner-name">${item.goty}</h4>
+              <p class="year-subtext">${item.studio}</p>
+            </div>
+            <div class="year-action-link">
+              Eredmények & Kategóriák &rarr;
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function openYearDetails(yearKey) {
+      const data = historyData[yearKey];
+      if (!data) return;
+
+      const hero = document.getElementById('detail-hero-content');
+      hero.innerHTML = `
+        <div class="detail-hero-content">
+          <div class="detail-year-tag">${data.year} &bull; Év Játéka (Game of the Year)</div>
+          <h2 class="detail-goty-title">${data.goty}</h2>
+          <p style="color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+            ${data.studio}
+          </p>
+          <p class="detail-quote">${data.quote}</p>
+        </div>
+        <div class="detail-hero-cover">
+          <img class="detail-hero-img" src="${data.image}" alt="${data.goty}" onerror="this.src='https://placehold.co/700x420/121828/d4af37?text=${encodeURIComponent(data.goty)}'">
+        </div>
+      `;
+
+      const catContainer = document.getElementById('detail-categories-container');
+      catContainer.innerHTML = '';
+
+      data.categories.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'category-card';
+        card.innerHTML = `
+          <div class="category-placeholder-box">
+            <img class="category-placeholder-img" src="${cat.image}" alt="${cat.winner}" onerror="this.src='https://placehold.co/500x280/161c2c/00e5ff?text=${encodeURIComponent(cat.winner)}'">
+            <div class="category-placeholder-overlay">
+              <span class="category-badge-pill">${cat.name}</span>
+            </div>
+          </div>
+          <div class="category-card-body">
+            <div>
+              <div class="category-name">${cat.name}</div>
+              <div class="category-winner">${cat.winner}</div>
+            </div>
+            <div class="category-extra">${cat.studio}</div>
+          </div>
+        `;
+        catContainer.appendChild(card);
+      });
+
+      switchView('detail');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchView(viewName) {
+      const mainView = document.getElementById('main-view');
+      const detailView = document.getElementById('detail-view');
+
+      if (viewName === 'detail') {
+        mainView.style.display = 'none';
+        detailView.style.display = 'block';
+      } else {
+        detailView.style.display = 'none';
+        mainView.style.display = 'block';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderNominees();
+      renderPastWinners();
+    });
+  </script>
+</body>
+</html>
